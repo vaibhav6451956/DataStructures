@@ -1,2 +1,2 @@
 # DataStructures
-Basics of Creating Data Structures in JAVA
+Data Structures implementation in JAVA
