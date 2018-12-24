@@ -127,15 +127,21 @@ public class BinarySearchTreeImpl {
 	 * @return
 	 */
 	private Node search(Node n, int val) {
+		try {
+			if (n.getData() == val)
+				return n;
 
-		if (n.getData() == val)
-			return n;
+			if (val < n.getData()) {
+				return (search(n.left, val));
+			}
 
-		if (val < n.getData()) {
-			return (search(n.left, val));
+			return (search(n.right, val));
+		} catch (NullPointerException e) {
+			System.out.println("Key does not exist in the tree");
+
 		}
 
-		return (search(n.right, val));
+		return null;
 
 	}
 }

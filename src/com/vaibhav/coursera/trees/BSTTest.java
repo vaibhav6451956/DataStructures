@@ -25,10 +25,14 @@ public class BSTTest {
 		bst.insert(6);
 
 		
-		
 		bst.printTree();
 		
 		System.out.println("Size of the tree is:"+ bst.size());
+		
+		Node n = bst.search(25);
+		if(n!=null)
+		System.out.println("Found the key");
+
 		
 	}
 
