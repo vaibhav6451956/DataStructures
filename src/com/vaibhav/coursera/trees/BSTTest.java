@@ -29,6 +29,7 @@ public class BSTTest {
 		bst.printTree();
 		
 		System.out.println("Size of the tree is:"+ bst.size());
+		
 	}
 
 }
