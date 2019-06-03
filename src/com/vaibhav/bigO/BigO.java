@@ -33,7 +33,13 @@ public class BigO {
 		o2.linearSearch(20);
 		o3.linearSearch(20);
 
-		System.out.println("\n Running Bubble Sort");
+		// Running Quick Sort
+		System.out.println("\n Running Quick Sort");
+		startTime = System.currentTimeMillis();
+		o3.quickSort(0, o.itemsInArray);
+		endTime = System.currentTimeMillis();
+		System.out.println("Quick Sort took: " + (endTime - startTime));
+
 		// Running Bubble Sort
 		BigO o4 = new BigO(10000);
 		o4.generateRandomArray();
@@ -46,6 +52,7 @@ public class BigO {
 
 		BigO o7 = new BigO(40000);
 		o7.generateRandomArray();
+		System.out.println("\n Running Bubble Sort");
 
 		o4.bubbleSort();
 		o5.bubbleSort();
@@ -123,7 +130,7 @@ public class BigO {
 
 	// ====================================================
 	// O(log N) - When in each iteration the input size roughly halves
-	// Binary Search
+	// BINARY SEARCH
 	// ===================================================
 
 	public void binarySearchForValue(int value) {
@@ -152,6 +159,55 @@ public class BigO {
 		endTime = System.currentTimeMillis();
 		System.out.println("Binary Search took: " + (endTime - startTime));
 		System.out.println("Time Thorugh: " + timesThrough);
+
+	}
+
+	// ====================================================
+	// O(nlog N)
+	// QUICK SORT
+	// ===================================================
+
+	public void quickSort(int left, int right) {
+
+		if (right - left <= 0)
+			return;
+
+		else {
+			int pivot = theArray[right];
+			int pivotLocation = partitionArray(left, right, pivot);
+			quickSort(left, pivotLocation - 1);
+			quickSort(pivotLocation + 1, right);
+		}
+	}
+
+	public int partitionArray(int left, int right, int pivot) {
+
+		int leftPointer = left - 1;
+		int rightPointer = right;
+
+		while (true) {
+
+			while (theArray[++leftPointer] < pivot)
+				;
+
+			while (rightPointer > 0 && theArray[--rightPointer] > pivot)
+				;
+
+			if (leftPointer >= rightPointer) {
+
+				break;
+
+			} else {
+
+				swapValues(leftPointer, rightPointer);
+
+			}
+
+		}
+
+		swapValues(leftPointer, right);
+
+		return leftPointer;
 
 	}
 
